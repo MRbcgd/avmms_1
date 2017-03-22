@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  h1 signin
+
+  if user
+    div
+      h1 Aleady Login!
+  else
+    div
+      form(action='signin' method='POST')
+        p
+          input(type='text' placeholder='username' name='username')
+        p
+          input(type='password' placeholder='password' name='password')
+        p
+          input(type='submit')
