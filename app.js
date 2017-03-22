@@ -3,10 +3,14 @@ var passport =require('./config/passport.js')(app);
 
 var index = require('./routes/index')(passport);
 var auth = require('./routes/auth')(passport);
+var vm = require('./routes/vm')(passport);
+var setting = require('./routes/setting')(passport);
 var users = require('./routes/users');
 
 app.use('/', index);
 app.use('/auth',auth);
+app.use('/vm',vm);
+app.use('/setting',setting)
 app.use('/users', users);
 
 // catch 404 and forward to error handler

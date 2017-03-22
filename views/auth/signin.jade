@@ -1,14 +1,17 @@
 extends ../layout
 
 block main
-  form(action='signin' method='POST').form-signin
-    h2.form-signin-heading Please sign in
-    label.sr-only(for='inputEmail') Username
-    input#inputEmail.form-control(type='text', placeholder='Username', required='', autofocus='' name='username')
-    label.sr-only(for='inputPassword') Password
-    input#inputPassword.form-control(type='password', placeholder='Password', required='' name='password')
-    .checkbox
+  if user
+    script.
+      location="/";
+  else
+    form(action='signin' method='POST').form-signin
+      h2.form-signin-heading Please sign in
+      label.sr-only(for='inputEmail') Username
+      input#inputEmail.form-control(type='text', placeholder='Username', required='', autofocus='' name='username')
+      label.sr-only(for='inputPassword') Password
+      input#inputPassword.form-control(type='password', placeholder='Password', required='' name='password')
+
       label
-        input(type='checkbox', value='remember-me')
-        |  Remember me
-    button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+
+      button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in

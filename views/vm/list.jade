@@ -1,0 +1,24 @@
+extends ../layout
+
+block main
+  if user
+      script.
+        location="/"
+  else
+      table.table(class="#{table-bordered}")
+        thead
+          tr
+            th avmId
+            th avmLocation
+            th avmCheckDate
+            th managerName
+            th managerHP
+        tbody
+          tr
+            each item in list
+              tr
+                td #{item.avmId}
+                td #{item.avmLocation}
+                td #{item.avmCheckDate}
+                td #{item.managerName}
+                td #{item.managerHP}
