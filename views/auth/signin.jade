@@ -1,17 +1,14 @@
 extends ../layout
 
-block content
-  h1 signin
-
-  if user
-    div
-      h1 Aleady Login!
-  else
-    div
-      form(action='signin' method='POST')
-        p
-          input(type='text' placeholder='username' name='username')
-        p
-          input(type='password' placeholder='password' name='password')
-        p
-          input(type='submit')
+block main
+  form(action='signin' method='POST').form-signin
+    h2.form-signin-heading Please sign in
+    label.sr-only(for='inputEmail') Username
+    input#inputEmail.form-control(type='text', placeholder='Username', required='', autofocus='' name='username')
+    label.sr-only(for='inputPassword') Password
+    input#inputPassword.form-control(type='password', placeholder='Password', required='' name='password')
+    .checkbox
+      label
+        input(type='checkbox', value='remember-me')
+        |  Remember me
+    button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in

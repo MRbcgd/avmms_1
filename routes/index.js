@@ -4,8 +4,7 @@ module.exports=function(passport){
   router.get('/',function(req, res, next){
     var user=req.user;
     res.render('index',{
-      title: 'AVMMS',
-      subtitle: 'Automatic Vending Machines Monitoring System',
+      title: 'VMMS',
       user
     });
   });
