@@ -1,0 +1,22 @@
+extends ../layout
+
+block main
+  table.table(class="#{table-bordered}")
+    thead
+      tr
+        th productId
+        th productName
+        th stockTotal
+        th stockPrice
+        th productCost
+        th stockProfits
+    tbody
+      tr
+        each item in list
+          tr
+            td #{item.productId}
+            td #{item.productName}
+            td #{item.stockTotal}
+            td #{item.stockPrice}
+            td #{item.productCost}
+            td #{item.stockProfits}

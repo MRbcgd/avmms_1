@@ -16,7 +16,7 @@ block main
           each item in list
             tr
               td
-                +btn-primary("contact")
+                +a-btn(user.managerId,item.avmId,"primary") CONTACT
               td #{item.avmId}
               td #{item.avmLocation}
               td #{item.avmCheckDate}

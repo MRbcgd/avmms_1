@@ -39,7 +39,7 @@ module.exports=function(app){
           return done(null, false, { message: 'Incorrect username.' });//정보가 틀리면 auth/login으로 이동
         }
 
-        if(uname===user.managerUsername && pwd===user.managerPassword){//아이디,패스워드 확인
+        if(uname === user.managerUsername && pwd=== user.managerPassword){//아이디,패스워드 확인
           return done(null,user);//정보가 맞다면 전송
         }
         else{
