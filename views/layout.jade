@@ -17,9 +17,11 @@ block body
             li
               a(href='/') Home
             li
-              a(href='/vm/list') Vending Machine
-            li
-              a(href='#') Setting
+              if user
+                a(href='/vm/list/#{user.managerId}') Vending Machine
+              else
+                a(href='/vm/list') Vending Machine
+
 
           ul.nav.navbar-nav.navbar-right
             li.active

@@ -8,6 +8,5 @@ module.exports=function(passport){
       user
     });
   });
-
   return router;
 }

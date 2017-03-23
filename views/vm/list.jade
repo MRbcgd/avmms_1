@@ -2,23 +2,48 @@ extends ../layout
 
 block main
   if user
-      script.
-        location="/"
+    table.table(class="#{table-bordered}")
+      thead
+        tr
+          th setting
+          th avmId
+          th avmLocation
+          th avmCheckDate
+          th managerName
+          th managerHP
+      tbody
+        tr
+          each item in list
+            tr
+              td
+                +btn-primary("contact")
+              td #{item.avmId}
+              td #{item.avmLocation}
+              td #{item.avmCheckDate}
+              td #{item.managerName}
+              td #{item.managerHP}
+
   else
       table.table(class="#{table-bordered}")
         thead
           tr
+            th setting
             th avmId
             th avmLocation
             th avmCheckDate
             th managerName
             th managerHP
+            th
         tbody
           tr
             each item in list
               tr
+                td
+                  +icon("lock")
                 td #{item.avmId}
                 td #{item.avmLocation}
                 td #{item.avmCheckDate}
                 td #{item.managerName}
                 td #{item.managerHP}
+                td
+                  +btn-primary("contact")
