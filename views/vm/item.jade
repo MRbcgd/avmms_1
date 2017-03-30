@@ -1,7 +1,18 @@
 extends ../layout
 
 block main
+  script(src='/socket.io/socket.io.js')
+  script.
+    window.onload=function(){
+    var socket=io.connect()
 
+    socket.on('checkAvmResult',function(){
+    location.href='/vm/list/#{user.managerId}/#{avm.avmId}'
+    })
+    document.getElementById('checkAvm').onclick=function(){
+    socket.emit('checkAvm','SOCKETIO -> UPDATE CHECKDATE')
+    }
+    }
   table.table(class="#{table-striped table-bordered}")
     thead
       tr
@@ -28,7 +39,8 @@ block main
         td avmCheckDate
         td #{avm.avmCheckDate}
         td
-          a.btn.btn-lg.btn-primary(href='./#{avm.avmId}/updateDate' role='button') 점검완료
+          a.btn.btn-lg.btn-primary(id='checkAvm' href='./#{avm.avmId}/updateDate' role='button') 점검완료
+
       tr
         td managerFinancialCondition
         td #{user.managerFinancialCondition}

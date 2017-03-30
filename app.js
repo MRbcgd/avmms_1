@@ -1,10 +1,13 @@
 var app = require('./config/express.js')();
+var socketio=require('socket.io')
 var passport =require('./config/passport.js')(app);
 
 var index = require('./routes/index')(passport);
 var auth = require('./routes/auth')(passport);
 var vm = require('./routes/vm')(passport);
 var users = require('./routes/users');
+
+app.io=require('socket.io');
 
 app.use('/', index);
 app.use('/auth',auth);
@@ -28,5 +31,17 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+var io=socketio();
+app.io=io;
+
+io.on("connection",function(socket){
+  socket.on('checkAvm',function(data){
+    console.log(data)
+
+    io.sockets.emit('checkAvmResult')
+  })
+})
 
 module.exports = app;

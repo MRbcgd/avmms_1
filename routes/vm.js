@@ -2,6 +2,9 @@ module.exports=function(passport){
   var conn=require('../config/db.js')();
   var router=require('express').Router();
 
+
+
+
   router.get('/list',function(req, res, next){
     var user = req.user;
     if(user){
@@ -78,10 +81,11 @@ module.exports=function(passport){
         console.log(err);
         res.status(500).send('Internal Server Error');
       }
-      if(results === undefined){
+      if(results === undefined || results[0] === undefined){
         console.log('SQL ERROR -> ', sql);
-        res.redirect('/');
+        res.redirect('/vm/list/'+user.managerId);
       }
+
 
       var avms = results[0];
 
