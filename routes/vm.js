@@ -71,27 +71,52 @@ module.exports=function(passport){
       res.redirect('/vm/list/'+user.managerId);
     }
 
-    var sql = 'SELECT avm.avmid,avmLocation,avmInstallDate,avmCheckDate,avmFinancialCondition,avmPrice,productId,productName,stockTotal,stockPrice,productCost,stockProfits FROM avm LEFT OUTER JOIN'+'('+'SELECT avmid,stock.productId,stockTotal,stockPrice,stockProfits,productName,productCost FROM stock LEFT OUTER JOIN product ON product.productId = stock.productId WHERE avmId = ?'+')'+' A ON A.avmid = avm.avmId WHERE avm.avmId = ? ORDER BY productId';
+    var sql = 'SELECT avm.avmId,avmLocation,avmInstallDate,avmCheckDate,avmFinancialCondition,avmPrice,productId,productName,stockTotal,stockPrice,productCost,stockProfits FROM avm LEFT OUTER JOIN (SELECT avmid,stock.productId,stockTotal,stockPrice,stockProfits,productName,productCost FROM stock LEFT OUTER JOIN product ON product.productId = stock.productId WHERE avmId = ?) A ON A.avmid = avm.avmId WHERE avm.avmId = ? ORDER BY productId';
 
     conn.query(sql, [ avmId,avmId ], function(err, results){
       if(err){
         console.log(err);
         res.status(500).send('Internal Server Error');
       }
-      if(results == undefined){
+      if(results === undefined){
         console.log('SQL ERROR -> ', sql);
         res.redirect('/');
       }
+
+      var avms = results[0];
+
       res.render('./vm/item',{
         title: 'VMMS',
+        avm: avms,
         list: results,
         user
       });
 
     });
   });
-  // router.all('*',function(req,res){//반드시 마지막, 위의 조건이 아니면 무조건 이 페이지 호출
-  //   res.redirect('/vm/list')
-  // });
+  router.get('/list/:managerId/:avmId/updateDate',function(req,res,next){
+    var user=req.user;
+    var managerId = req.params.managerId;
+    var avmId = req.params.avmId;
+
+    if(user === undefined){
+      res.redirect('/vm/list');
+    }
+    if(user.managerId != managerId){
+      res.redirect('/vm/list/'+user.managerId);
+    }
+
+    var sql = 'UPDATE avm SET avmCheckDate = NOW() WHERE avmId = ?;';
+
+    conn.query(sql, [ avmId ], function(err){
+      if(err){
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+      }
+      else{
+        res.redirect('/vm/list/'+user.managerId+'/'+avmId);
+      }
+    });
+  });
   return router;
 }

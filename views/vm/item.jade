@@ -1,6 +1,49 @@
 extends ../layout
 
 block main
+
+  table.table(class="#{table-striped table-bordered}")
+    thead
+      tr
+        th info
+        th
+    tbody
+      tr
+        td avmId
+        td #{avm.avmId}
+        td
+      tr
+        td avmLocation
+        td #{avm.avmLocation}
+        td
+      tr
+        td avmPrice
+        td #{avm.avmPrice}
+        td
+      tr
+        td avmInstallDate
+        td #{avm.avmInstallDate}
+        td
+      tr
+        td avmCheckDate
+        td #{avm.avmCheckDate}
+        td
+          a.btn.btn-lg.btn-primary(href='./#{avm.avmId}/updateDate' role='button') 점검완료
+      tr
+        td managerFinancialCondition
+        td #{user.managerFinancialCondition}
+        td
+      tr
+        td avmFinancialCondition
+        td #{avm.avmFinancialCondition}
+        td
+          +progress-bar-danger(avm.avmFinancialCondition/user.managerFinancialCondition*100)
+
+
+
+
+
+
   table.table(class="#{table-bordered}")
     thead
       tr
