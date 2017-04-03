@@ -39,8 +39,14 @@ app.io=io;
 io.on("connection",function(socket){
   socket.on('checkAvm',function(data){
     console.log(data)
-
-    io.sockets.emit('checkAvmResult')
+    io.sockets.emit('checkAvmResult',data)
+  })
+  socket.on('earnIncome',function(data){
+    io.sockets.emit('earnIncomeResult',data)
+  })
+  socket.on('purchaseProduct',function(data){
+    console.log(data);
+    io.sockets.emit('purchaseProductResult',data)
   })
 })
 

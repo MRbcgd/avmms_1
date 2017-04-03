@@ -9,9 +9,27 @@ block main
     socket.on('checkAvmResult',function(){
     location.href='/vm/list/#{user.managerId}/#{avm.avmId}'
     })
+    socket.on('earnIncomeResult',function(data){
+    alert(data+'WON 수익실현')
+    location.href='/vm/list/#{user.managerId}/#{avm.avmId}'
+    })
+    socket.on('purchaseProductResult',function(data){
+    alert(data)
+    location.href='/vm/list/#{user.managerId}/#{avm.avmId}'
+    })
+
     document.getElementById('checkAvm').onclick=function(){
     socket.emit('checkAvm','SOCKETIO -> UPDATE CHECKDATE')
     }
+    document.getElementById('earnIncome').onclick=function(){
+    socket.emit('earnIncome',#{avm.avmFinancialCondition})
+    }
+    for(var i=1; i<=11; i++){
+    document.getElementById(i).onclick=function(){
+    socket.emit('purchaseProduct','test')
+    }
+    }
+
     }
   table.table(class="#{table-striped table-bordered}")
     thead
@@ -39,12 +57,13 @@ block main
         td avmCheckDate
         td #{avm.avmCheckDate}
         td
-          a.btn.btn-lg.btn-primary(id='checkAvm' href='./#{avm.avmId}/updateDate' role='button') 점검완료
+          a.btn.btn-lg.btn-primary(id='checkAvm' href='/vm/list/#{user.managerId}/#{avm.avmId}/updateDate' role='button') 점검완료
 
       tr
         td managerFinancialCondition
         td #{user.managerFinancialCondition}
         td
+          a.btn.btn-lg.btn-primary(id='earnIncome' href='/vm/list/#{user.managerId}/#{avm.avmId}/earnIncome' role='button') 수익실현
       tr
         td avmFinancialCondition
         td #{avm.avmFinancialCondition}
@@ -62,16 +81,26 @@ block main
         th productId
         th productName
         th stockTotal
+        th
         th stockPrice
         th productCost
         th stockProfits
     tbody
       tr
         each item in list
+          script.
+            var
           tr
             td #{item.productId}
             td #{item.productName}
-            td #{item.stockTotal}
+            td
+              if(item.stockTotal>=30)
+                label(style='color:red')
+                  = item.stockTotal
+              else
+                = item.stockTotal
+            td
+              a.btn.btn-sm.btn-primary(id=item.productId href='/vm/list/#{user.managerId}/#{avm.avmId}/#{item.productId}' role='button') 재고구입
             td #{item.stockPrice}
             td #{item.productCost}
             td #{item.stockProfits}

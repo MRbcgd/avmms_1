@@ -4,7 +4,6 @@ module.exports=function(passport){
 
 
 
-
   router.get('/list',function(req, res, next){
     var user = req.user;
     if(user){
@@ -81,9 +80,9 @@ module.exports=function(passport){
         console.log(err);
         res.status(500).send('Internal Server Error');
       }
-      if(results === undefined || results[0] === undefined){
+      if(results === undefined){
         console.log('SQL ERROR -> ', sql);
-        res.redirect('/vm/list/'+user.managerId);
+        res.redirect('/');
       }
 
 
@@ -118,6 +117,62 @@ module.exports=function(passport){
         res.status(500).send('Internal Server Error');
       }
       else{
+        res.redirect('/vm/list/'+user.managerId+'/'+avmId);
+      }
+    });
+  });
+  router.get('/list/:managerId/:avmId/earnIncome',function(req,res,next){
+
+    var user=req.user;
+    var managerId = req.params.managerId;
+    var avmId = req.params.avmId;
+
+    if(user === undefined){
+      res.redirect('/vm/list');
+    }
+    if(user.managerId != managerId){
+      res.redirect('/vm/list/'+user.managerId);
+    }
+
+    var sql = 'SET @description=""; CALL earnIncome(?,?,@description); SELECT @description';
+    conn.query(sql, [ managerId,avmId], function(err,results){
+      if(err){
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+      }
+      else{
+        for (var i = 0; i < results.length; i++) {
+            console.log(results[i]); // 여기에 전달받은 결과가 표시됨 @변수명으로...
+        };
+        res.redirect('/vm/list/'+user.managerId+'/'+avmId);
+      }
+    });
+  });
+  router.get('/list/:managerId/:avmId/:productId',function(req,res,next){
+
+    var user=req.user;
+    var managerId = req.params.managerId;
+    var avmId = req.params.avmId;
+    var productId = req.params.productId;
+
+    if(user === undefined){
+      res.redirect('/vm/list');
+    }
+    if(user.managerId != managerId){
+      res.redirect('/vm/list/'+user.managerId);
+    }
+
+    var sql = 'SET @description=""; CALL purchaseProduct(?,?,?,@description); SELECT @description';
+
+    conn.query(sql, [ managerId,avmId,productId], function(err,results){
+      if(err){
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+      }
+      else{
+        for (var i = 0; i < results.length; i++) {
+            console.log(results[i]); // 여기에 전달받은 결과가 표시됨 @변수명으로...
+        };
         res.redirect('/vm/list/'+user.managerId+'/'+avmId);
       }
     });
