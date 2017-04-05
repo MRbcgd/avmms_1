@@ -1,0 +1,41 @@
+extends ../layout
+
+block main
+  script(src='/socket.io/socket.io.js')
+  script.
+    window.onload=function(){
+    var socket=io.connect()
+
+    socket.on('sellProductResult',function(data){
+    location.href='/vm/client/#{avmId}/'
+    })
+
+    for(var i=1; i<=11; i++){
+    document.getElementById(i).onclick=function(){
+    socket.emit('sellProduct','test')
+    }
+    }
+
+    }
+  table.table(class="#{table-striped table-bordered}")
+    thead
+      tr
+        th 상품번호
+        th 상품이름
+        th 상품수량
+        th 상품가격
+        th 상품구입
+    tbody
+      each item in list
+        tr
+          td #{item.productId}
+          td #{item.productName}
+          td
+            if(item.stockTotal<=0)
+              label(style='color:red')
+                = item.stockTotal
+            else
+              = item.stockTotal
+          td #{item.stockPrice}
+          td
+            a.btn.btn-sm.btn-primary(id=item.productId href='/vm/client/#{item.avmId}/#{item.productId}' role='button') 구입

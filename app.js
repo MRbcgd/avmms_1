@@ -48,6 +48,11 @@ io.on("connection",function(socket){
     console.log(data);
     io.sockets.emit('purchaseProductResult',data)
   })
+  socket.on('sellProduct',function(data){
+    console.log(data);
+    io.sockets.emit('sellProductResult',data)
+  })
+
 })
 
 module.exports = app;

@@ -177,5 +177,59 @@ module.exports=function(passport){
       }
     });
   });
+  router.get('/client/:avmId',function(req,res,next){
+
+    var user=req.user;
+    var avmId = req.params.avmId;
+
+    if(user != undefined){
+      res.redirect('/vm/list/'+user.managerId);
+    }
+
+    var sql = 'SELECT stock.avmId,product.productId,stockTotal,stockPrice,productName FROM STOCK LEFT OUTER JOIN product ON product.productId = stock.productId WHERE avmId = ?;';
+
+    conn.query(sql, [ avmId ], function(err,results){
+      if(err){
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+      }
+      if(results[0] === undefined){
+        console.log('SQL ERROR -> ', sql);
+        res.redirect('/vm/list');
+      }
+      else{
+        res.render('./vm/client',{
+          title: 'VMMS',
+          avmId: avmId,
+          list: results
+        });
+      }
+    });
+  });
+  router.get('/client/:avmId/:productId',function(req,res,next){
+
+    var user=req.user;
+    var avmId = req.params.avmId;
+    var productId = req.params.productId;
+
+    if(user != undefined){
+      res.redirect('/vm/list/'+user.managerId);
+    }
+
+    var sql = 'SET @description=""; CALL sellProduct(?,?,@description); SELECT @description';
+
+    conn.query(sql, [ avmId,productId ], function(err,results){
+      if(err){
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+      }
+      else{
+        for (var i = 0; i < results.length; i++) {
+            console.log(results[i]); // 여기에 전달받은 결과가 표시됨 @변수명으로...
+        };
+        res.redirect('/vm/client/'+avmId);
+      }
+    });
+  });
   return router;
 }
