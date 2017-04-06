@@ -1,24 +1,37 @@
-module.exports=function(passport){
-  var conn=require('../config/db.js')();
-  var router=require('express').Router();
+/*
+auth.js
+1. 관리자 로그인
+2. 관리자 로그아웃
+*****************************************************************************************************************
 
-  router.get('/signin',function(req, res, next){
-    var user=req.user;
+-auth/signin
+-auth/signout
+
+*/
+module.exports = function(passport){
+  var conn = require('../config/db.js')();
+  var router = require('express').Router();
+
+  router.get('/signin', function(req, res, next){//관리자 로그인
+    var user = req.user;
+
     if(user){
       res.redirect('/');
     }
-    res.render('./auth/signin',{
-      title: 'VMMS',
-    });
+    else{
+      res.render('./auth/signin', {
+        title: 'VMMS',
+      });
+    }
   });
-  router.post('/signin',//passport
+  router.post('/signin',//관리자 로그인
     passport.authenticate('local',{
       successRedirect: '/',
-      failureRedirect: '/auth/signin',//검증에서 false를 done했다면
+      failureRedirect: '/auth/signin',
       failureFlash: false
     })
   );
-  router.get('/signout',function(req,res){
+  router.get('/signout', function(req, res){//관리자 로그아웃
     var user = req.user;
     if(user){
       req.logout();
@@ -30,8 +43,9 @@ module.exports=function(passport){
       res.redirect('/');
     }
   });
-  router.all('*',function(req,res){//반드시 마지막, 위의 조건이 아니면 무조건 이 페이지 호출
+  router.all('*', function(req, res){
     res.redirect('/auth/signin');
   });
+
   return router;
 }

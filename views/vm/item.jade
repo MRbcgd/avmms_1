@@ -1,36 +1,35 @@
 extends ../layout
 
 block main
-  script(src='/socket.io/socket.io.js')
+  script(src = '/socket.io/socket.io.js')
   script.
-    window.onload=function(){
-    var socket=io.connect()
+    window.onload = function(){
+    var socket = io.connect()
+    /*최신 데이터 출력*/
 
-    socket.on('checkAvmResult',function(){
-    location.href='/vm/list/#{user.managerId}/#{avm.avmId}'
+    socket.on('checkAvmResult', function(){//점검시간 수정
+    location.href = '/vm/list/#{user.managerId}/#{avm.avmId}'
     })
-    socket.on('earnIncomeResult',function(data){
-    alert(data+'WON 수익실현')
-    location.href='/vm/list/#{user.managerId}/#{avm.avmId}'
+    socket.on('earnIncomeResult', function(data){//수익금 회수
+    location.href = '/vm/list/#{user.managerId}/#{avm.avmId}'
     })
-    socket.on('purchaseProductResult',function(data){
-    alert(data)
-    location.href='/vm/list/#{user.managerId}/#{avm.avmId}'
+    socket.on('purchaseProductResult', function(data){//재고 구입
+    location.href = '/vm/list/#{user.managerId}/#{avm.avmId}'
     })
 
-    document.getElementById('checkAvm').onclick=function(){
-    socket.emit('checkAvm','SOCKETIO -> UPDATE CHECKDATE')
+    document.getElementById('checkAvm').onclick = function(){
+    socket.emit('checkAvm', 'SOCKETIO -> UPDATE CHECKDATE')
     }
-    document.getElementById('earnIncome').onclick=function(){
-    socket.emit('earnIncome',#{avm.avmFinancialCondition})
+    document.getElementById('earnIncome').onclick = function(){
+    socket.emit('earnIncome', #{avm.avmFinancialCondition})
     }
-    for(var i=1; i<=11; i++){
-    document.getElementById(i).onclick=function(){
-    socket.emit('purchaseProduct','test')
+    for(var i = 1; i <= 11; i++){
+    document.getElementById(i).onclick = function(){
+    socket.emit('purchaseProduct')
+    }
     }
     }
 
-    }
   table.table(class="#{table-striped table-bordered}")
     thead
       tr
@@ -38,53 +37,50 @@ block main
         th
     tbody
       tr
-        td avmId
+        td 번호
         td #{avm.avmId}
         td
       tr
-        td avmLocation
+        td 위치
         td #{avm.avmLocation}
         td
       tr
-        td avmPrice
+        td 자판기 가격
         td #{avm.avmPrice}
         td
       tr
-        td avmInstallDate
+        td 설치일
         td #{avm.avmInstallDate}
         td
       tr
-        td avmCheckDate
+        td 최근 점검일
         td #{avm.avmCheckDate}
         td
-          a.btn.btn-lg.btn-primary(id='checkAvm' href='/vm/list/#{user.managerId}/#{avm.avmId}/updateDate' role='button') 점검완료
+          a.btn.btn-lg.btn-primary(id = 'checkAvm' href = '/vm/list/#{user.managerId}/#{avm.avmId}/updateDate' role = 'button') 점검완료
 
       tr
-        td managerFinancialCondition
+        td 관리자 자본
         td #{user.managerFinancialCondition}
         td
-          a.btn.btn-lg.btn-primary(id='earnIncome' href='/vm/list/#{user.managerId}/#{avm.avmId}/earnIncome' role='button') 수익실현
+          a.btn.btn-lg.btn-primary(id = 'earnIncome' href = '/vm/list/#{user.managerId}/#{avm.avmId}/earnIncome' role = 'button') 수익실현
       tr
-        td avmFinancialCondition
+        td 자판기 수익금
         td #{avm.avmFinancialCondition}
         td
           +progress-bar-danger(avm.avmFinancialCondition/user.managerFinancialCondition*100)
-
-
-
-
-
+            //
+              자판기수익금 / 관리자총자본  -> progress-bar로 표시
 
   table.table(class="#{table-bordered}")
     thead
       tr
-        th productId
-        th productName
-        th stockTotal
+        th 재고번호
+        th 재고명
+        th 수량
         th
-        th stockPrice
-        th productCost
-        th stockProfits
+        th 판매가격
+        th 재고원가
+        th 누적 수익금
     tbody
       tr
         each item in list
@@ -97,6 +93,8 @@ block main
               if(item.stockTotal>=30)
                 label(style='color:red')
                   = item.stockTotal
+                    //
+                      상품수량 30초과 적색
               else
                 = item.stockTotal
             td

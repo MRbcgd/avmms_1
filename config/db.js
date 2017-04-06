@@ -1,5 +1,13 @@
-module.exports=function(){
-  var mysql=require('mysql');
+/*
+db.js
+
+-db 연동
+*****************************************************************************************************************
+
+*/
+module.exports = function(){
+  var mysql = require('mysql');
+
   var conn = mysql.createConnection({
       host: 'localhost',
       port: 3306,

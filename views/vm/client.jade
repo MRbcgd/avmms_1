@@ -3,21 +3,21 @@ extends ../layout
 block main
   script(src='/socket.io/socket.io.js')
   script.
-    window.onload=function(){
-    var socket=io.connect()
+    window.onload = function(){
+    var socket = io.connect()
+    /*최신 데이터 출력*/
 
-    socket.on('sellProductResult',function(data){
-    location.href='/vm/client/#{avmId}/'
+    socket.on('sellProductResult', function(data){//상품판매
+    location.href = '/vm/client/#{avmId}/'
     })
 
-    for(var i=1; i<=11; i++){
-    document.getElementById(i).onclick=function(){
-    socket.emit('sellProduct','test')
+    for(var i = 1; i <= 11; i++){
+    document.getElementById(i).onclick = function(){
+    socket.emit('sellProduct')
     }
     }
-
     }
-  table.table(class="#{table-striped table-bordered}")
+  table.table(class = "#{table-striped table-bordered}")
     thead
       tr
         th 상품번호
@@ -32,10 +32,12 @@ block main
           td #{item.productName}
           td
             if(item.stockTotal<=0)
-              label(style='color:red')
+              label(style = 'color:red')
                 = item.stockTotal
+                  //
+                    상품 수량 0이하 적색
             else
               = item.stockTotal
           td #{item.stockPrice}
           td
-            a.btn.btn-sm.btn-primary(id=item.productId href='/vm/client/#{item.avmId}/#{item.productId}' role='button') 구입
+            a.btn.btn-sm.btn-primary(id = item.productId href = '/vm/client/#{item.avmId}/#{item.productId}' role = 'button') 구입

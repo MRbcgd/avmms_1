@@ -2,21 +2,28 @@ extends ../layout
 
 block main
   if user
-    table.table(class="#{table-bordered}")
+    +dropdown("다운로드 목록",[
+   	{ text: "구입기록부", url: "/dw/purchaseList" },
+   	{ text: "판매기록부", url: "/dw/sellList" },
+   	{ text: "점검기록부", url: "/dw/checkDateList" }
+   ])
+    table.table(class = "#{table-bordered}")
       thead
         tr
           th setting
-          th avmId
-          th avmLocation
-          th avmCheckDate
-          th managerName
-          th managerHP
+          th 번호
+          th 위치
+          th 최근 점검일
+          th 관리자명
+          th 연락처
       tbody
         tr
           each item in list
             tr
               td
-                +a-btn(user.managerId,item.avmId,"primary") CONTACT
+                +a-btn(user.managerId, item.avmId, "primary") CONTACT
+                  //
+                    관리자만 접속 허용
               td #{item.avmId}
               td #{item.avmLocation}
               td #{item.avmCheckDate}
@@ -24,15 +31,15 @@ block main
               td #{item.managerHP}
 
   else
-      table.table(class="#{table-bordered}")
+      table.table(class = "#{table-bordered}")
         thead
           tr
             th setting
-            th avmId
-            th avmLocation
-            th avmCheckDate
-            th managerName
-            th managerHP
+            th 번호
+            th 위치
+            th 최근 점검일
+            th 관리자명
+            th 연락처
             th
         tbody
           tr
@@ -40,10 +47,12 @@ block main
               tr
                 td
                   +icon("lock")
+                    //
+                      관리자만 접속 허용
                 td #{item.avmId}
                 td #{item.avmLocation}
                 td #{item.avmCheckDate}
                 td #{item.managerName}
                 td #{item.managerHP}
                 td
-                  a.btn.btn-sm.btn-primary(href='/vm/client/#{item.avmId}' role='button') CONTACT
+                  a.btn.btn-sm.btn-primary(href = '/vm/client/#{item.avmId}' role = 'button') CONTACT

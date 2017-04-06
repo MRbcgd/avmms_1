@@ -1,54 +1,63 @@
-module.exports=function(app){
-  var conn=require('./db.js')();
-  var passport = require('passport');//passport 사용하기 위해
-  var LocalStrategy = require('passport-local').Strategy;//passport-local 사용하기 위해
+/*
+passport.js
 
-  app.use(passport.initialize());//passport 사용하기 위해
-  app.use(passport.session());//passport 사용하기 위해
+-사용자 인증
+*****************************************************************************************************************
 
-  passport.serializeUser(function(user, done) {//로그인 검증후, 세션 검증시 마다 authId를 통해 세션 호출
+*/
+module.exports = function(app){
+  var conn = require('./db.js')();
+  var passport = require('passport');//passport 모듈
+  var LocalStrategy = require('passport-local').Strategy;//passport-local 모듈
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  passport.serializeUser(function(user, done) {
     done(null, user.managerUsername);
   });
-  passport.deserializeUser(function(id, done) {//세션이 호출마다 검증
-    var sql='SELECT * FROM manager WHERE managerUsername = ?';
+  passport.deserializeUser(function(id, done) {
+    var sql = 'SELECT * FROM manager WHERE managerUsername = ?';
+
     conn.query(sql, [ id ], function(err, results){
-      if(err){//세션에 관한 오류발생시
+      if(err){
         console.log(err);
         return done('There Is No User.');
       }
       else{
-        return done(null,results[0]);
+        return done(null, results[0]);
       }
     })
   });
 
-  passport.use(new LocalStrategy(//로그인시
+  passport.use(new LocalStrategy(
     function(username, password, done) {
       var uname = username;
       var pwd = password;
       var sql = 'SELECT * FROM manager WHERE managerUsername = ?';
+
       conn.query(sql, [ uname ], function(err, results){
+        var user = results[0];
+
         if(err){
           console.log(err);
           return done('There Is No User.');
         }
 
-        var user=results[0];
         if(user == undefined){
           console.log('Wrong User, Try Again!');
-          return done(null, false, { message: 'Incorrect username.' });//정보가 틀리면 auth/login으로 이동
+          return done(null, false, { message: 'Incorrect username.' });
         }
-
-        if(uname === user.managerUsername && pwd=== user.managerPassword){//아이디,패스워드 확인
-          return done(null,user);//정보가 맞다면 전송
+        if(uname === user.managerUsername && pwd === user.managerPassword){
+          return done(null, user);
         }
         else{
           console.log('Wrong User, Try Again!');
-          return done(null, false, { message: 'Incorrect Password.' });//정보가 틀리면 auth/login으로 이동
+          return done(null, false, { message: 'Incorrect Password.' });
         }
       })
-      //done('<h1>Who are you?</h1><a href="/auth/login">login</a>');
-    }
-  ));
+    })
+  );
+
   return passport;
 }
