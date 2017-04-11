@@ -7,13 +7,13 @@ block main
     var socket = io.connect()
     /*최신 데이터 출력*/
 
-    socket.on('checkAvmResult', function(){//점검시간 수정
+    socket.on('checkAvmResult', function(){
     location.href = '/vm/list/#{user.managerId}/#{avm.avmId}'
     })
-    socket.on('earnIncomeResult', function(data){//수익금 회수
+    socket.on('earnIncomeResult', function(data){
     location.href = '/vm/list/#{user.managerId}/#{avm.avmId}'
     })
-    socket.on('purchaseProductResult', function(data){//재고 구입
+    socket.on('purchaseProductResult', function(data){
     location.href = '/vm/list/#{user.managerId}/#{avm.avmId}'
     })
 

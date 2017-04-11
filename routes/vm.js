@@ -3,22 +3,19 @@ vm.js
 1. 관리자 자판기 관리
 2. 고객 음료수 구매
 *****************************************************************************************************************
-
 -vm/list
-
 -vm/list/managerId
 -vm/list/managerId/avmId
 -vm/list/managerId/avmId/updateDate
 -vm/list/managerId/avmId/earnIncome
 -vm/list/managerId/avmId/productId
-
 -vm/client/avmId
 -vm/client/avmId/productId
-
 */
 module.exports = function(passport){
   var conn = require('../config/db.js')();
   var router = require('express').Router();
+  var http=require('http')
 
   router.get('/list', function(req, res, next){//자판기 목록
     var user = req.user;
@@ -55,10 +52,16 @@ module.exports = function(passport){
     //sql : 로그인 한 관리자의 자판기 데이터
 
     if(user === undefined){
-      res.redirect('/vm/list');
+      // res.redirect('/vm/list');
+      // return done(null, false, { message: 'SQL ERROR' });
+      console.log("User Not Found");
+      throw new Error("User Not Found");
     }
     if(user.managerId != managerId){
-      res.redirect('/vm/list/' + user.managerId);
+      // res.redirect('/vm/list/' + user.managerId);
+      // return done(null, false, { message: 'SQL ERROR' });
+      console.log(managerId);
+      throw new Error("ManagerId Not Correct");
     }
 
     conn.query(sql, [ managerId ], function(err, results){
@@ -88,32 +91,34 @@ module.exports = function(passport){
     //sql : 자판기 및 재고 데이터
 
     if(user === undefined){
-      res.redirect('/vm/list');
+      console.log("User Not Found");
+      throw new Error("User Not Found");
     }
     if(user.managerId != managerId){
-      res.redirect('/vm/list/' + user.managerId);
+      console.log("ManagerId Not Correct");
+      throw new Error("ManagerId Not Correct");
     }
-
-    conn.query(sql, [ avmId, avmId ], function(err, results){
-      var avms = results[0];
-
-      if(err){
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-      }
-      if(results === undefined){
-        console.log('SQL ERROR -> ', sql);
-        res.redirect('/');
-      }
-      else{
-        res.render('./vm/item',{
-          title: 'VMMS',
-          avm: avms,
-          list: results,
-          user
-        });
-      }
-    });
+    else{
+      conn.query(sql, [ avmId, avmId ], function(err, results){
+        var avms = results[0];
+        if(err){
+          console.log(err);
+          res.status(500).send('Internal Server Error');
+        }
+        if(avms === undefined){
+          console.log('SQL ERROR -> ', sql);
+          res.redirect('/vm/list');
+        }
+        else{
+          res.render('./vm/item',{
+            title: 'VMMS',
+            avm: avms,
+            list: results,
+            user
+          });
+        }
+      });
+    }
   });
   router.get('/list/:managerId/:avmId/updateDate', function(req, res, next){//자판기 점검시간 최신화
     var user = req.user;
@@ -123,21 +128,26 @@ module.exports = function(passport){
     //sql : 자판기 점검시간 최신화
 
     if(user === undefined){
-      res.redirect('/vm/list');
+      console.log("User Not Found");
+      throw new Error("User Not Found");
     }
     if(user.managerId != managerId){
-      res.redirect('/vm/list/'+user.managerId);
+      console.log("ManagerId Not Correct");
+      throw new Error("ManagerId Not Correct");
+    }
+    else{
+      conn.query(sql, [ avmId ], function(err){
+        if(err){
+          console.log(err);
+          res.status(500).send('Internal Server Error');
+        }
+        else{
+          res.redirect('/vm/list/'+user.managerId+'/' + avmId);
+        }
+      });
     }
 
-    conn.query(sql, [ avmId ], function(err){
-      if(err){
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-      }
-      else{
-        res.redirect('/vm/list/'+user.managerId+'/' + avmId);
-      }
-    });
+
   });
   router.get('/list/:managerId/:avmId/earnIncome', function(req, res, next){//자판기 수익금 회수
     var user = req.user;
@@ -147,24 +157,27 @@ module.exports = function(passport){
     //sql : 자판기 수익금 관리자 수익금으로 회수
 
     if(user === undefined){
-      res.redirect('/vm/list');
+      console.log("User Not Found");
+      throw new Error("User Not Found");
     }
     if(user.managerId != managerId){
-      res.redirect('/vm/list/' + user.managerId);
+      console.log("ManagerId Not Correct");
+      throw new Error("ManagerId Not Correct");
     }
-
-    conn.query(sql, [ managerId, avmId ], function(err, results){
-      if(err){
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-      }
-      else{
-        for(var i = 0; i < results.length; i++) {
-            console.log(results[i]); // 여기에 전달받은 결과가 표시됨 @변수명으로...
-        };
-        res.redirect('/vm/list/'+user.managerId+'/'+avmId);
-      }
-    });
+    else{
+      conn.query(sql, [ managerId, avmId ], function(err, results){
+        if(err){
+          console.log(err);
+          res.status(500).send('Internal Server Error');
+        }
+        else{
+          for(var i = 0; i < results.length; i++) {
+              console.log(results[i]);
+          };
+          // res.redirect('/vm/list/'+user.managerId+'/'+avmId);
+        }
+      });
+    }
   });
   router.get('/list/:managerId/:avmId/:productId', function(req, res, next){//재고 구입
     var user = req.user;
@@ -173,26 +186,28 @@ module.exports = function(passport){
     var productId = req.params.productId;
     var sql = 'SET @description=""; CALL purchaseProduct(?, ?, ?, @description); SELECT @description';
     //sql : 재고 구입
-
+    console.log(avmId);
     if(user === undefined){
-      res.redirect('/vm/list');
+      console.log("User Not Found");
+      throw new Error("User Not Found");
     }
     if(user.managerId != managerId){
-      res.redirect('/vm/list/'+user.managerId);
+      console.log("ManagerId Not Correct");
+      throw new Error("ManagerId Not Correct");
     }
-
-    conn.query(sql, [ managerId, avmId, productId], function(err, results){
-      if(err){
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-      }
-      else{
-        for(var i = 0; i < results.length; i++) {
-            console.log(results[i]);
-        };
-        res.redirect('/vm/list/' + user.managerId + '/' + avmId);
-      }
-    });
+    else{
+      conn.query(sql, [ managerId, avmId, productId], function(err, results){
+        if(err){
+          console.log(err);
+          res.status(500).send('Internal Server Error');
+        }
+        else{
+          for(var i = 0; i < results.length; i++) {
+              console.log(results[i]);
+          };
+        }
+      });
+    }
   });
   router.get('/client/:avmId', function(req, res, next){//고객 자판기 상품 목록 보기
     var user = req.user;
@@ -203,6 +218,7 @@ module.exports = function(passport){
     if(user != undefined){
       res.redirect('/vm/list/' + user.managerId);
     }
+    console.log(avmId);
 
     conn.query(sql, [ avmId ], function(err, results){
       if(err){
@@ -232,6 +248,7 @@ module.exports = function(passport){
     if(user != undefined){
       res.redirect('/vm/list/'+user.managerId);
     }
+    console.log(avmId);
 
     conn.query(sql, [ avmId, productId ], function(err, results){
       if(err){
@@ -242,7 +259,7 @@ module.exports = function(passport){
         for (var i = 0; i < results.length; i++) {
             console.log(results[i]);
         };
-        res.redirect('/vm/client/' + avmId);
+        // res.redirect('/vm/client/' + avmId);
       }
     });
   });

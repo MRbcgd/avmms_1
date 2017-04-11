@@ -1,2 +1,1 @@
-avmCheckDateLogId=183 avmCheckDate=Thu Apr 06 2017 17:07:24 GMT+0900 (대한민국 표준시) avmId=8 
-avmCheckDateLogId=185 avmCheckDate=Thu Apr 06 2017 17:07:24 GMT+0900 (대한민국 표준시) avmId=8 
+avmCheckDateLogId=293 avmCheckDate=Tue Apr 11 2017 15:37:25 GMT+0900 (대한민국 표준시) avmId=1 
