@@ -9,11 +9,11 @@ module.exports = function(){
   var mysql = require('mysql');
 
   var conn = mysql.createConnection({
-      host: 'localhost',
+      host: '127.0.0.1',
+      user: 'crowneck',
       port: 3306,
-      user: 'root',
-      password: 'qkrcjfgud12',
-      database: 'avmms',
+      password: '',
+      database: 'c9',
       multipleStatements: true
   });
   conn.connect(function(err) {

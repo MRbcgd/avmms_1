@@ -124,7 +124,7 @@ module.exports = function(passport){
     var user = req.user;
     var managerId = req.params.managerId;
     var avmId = req.params.avmId;
-    var sql = 'UPDATE avm SET avmCheckDate = NOW() WHERE avmId = ?;';
+    var sql = 'UPDATE avm SET avmCheckDate = SYSDATE() WHERE avmId = ?;';
     //sql : 자판기 점검시간 최신화
 
     if(user === undefined){
@@ -212,7 +212,7 @@ module.exports = function(passport){
   router.get('/client/:avmId', function(req, res, next){//고객 자판기 상품 목록 보기
     var user = req.user;
     var avmId = req.params.avmId;
-    var sql = 'SELECT stock.avmId,product.productId,stockTotal,stockPrice,productName FROM STOCK LEFT OUTER JOIN product ON product.productId = stock.productId WHERE avmId = ?;';
+    var sql = 'SELECT stock.avmId,product.productId,stockTotal,stockPrice,productName FROM stock LEFT OUTER JOIN product ON product.productId = stock.productId WHERE avmId = ?;';
     //sql : 자판기 상품 목록, 상품 정보
 
     if(user != undefined){

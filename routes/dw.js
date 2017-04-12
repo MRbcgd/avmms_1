@@ -31,7 +31,7 @@ module.exports = function(passport){
       sql = 'SELECT * FROM sell;'
     }
     else{//점검기록부
-      sql = 'SELECT * FROM avmcheckdatelog;'
+      sql = 'SELECT * FROM avmCheckDateLog;'
     }
 
 

@@ -1,1 +1,19 @@
-avmCheckDateLogId=293 avmCheckDate=Tue Apr 11 2017 15:37:25 GMT+0900 (대한민국 표준시) avmId=1 
+avmCheckDateLogId=5 avmCheckDate=0000-00-00 00:00:00 avmId=5 
+avmCheckDateLogId=6 avmCheckDate=0000-00-00 00:00:00 avmId=6 
+avmCheckDateLogId=7 avmCheckDate=Wed Apr 12 2017 07:14:59 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=8 avmCheckDate=Wed Apr 12 2017 07:17:40 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=9 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=10 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=11 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=12 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=13 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=14 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=15 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=16 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=17 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=18 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=19 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=20 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=21 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=22 avmCheckDate=Wed Apr 12 2017 07:17:48 GMT+0000 (UTC) avmId=5 
+avmCheckDateLogId=23 avmCheckDate=Wed Apr 12 2017 07:25:15 GMT+0000 (UTC) avmId=5 
