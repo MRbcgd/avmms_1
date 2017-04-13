@@ -58,7 +58,7 @@ module.exports = function(passport){
         }
 
         fs.writeFile(file, data, function(error){//새로 파일에 쓰기
-           console.log('download ' + dwname + '.txt');
+           console.log('Download ' + dwname + '.txt');
         });
 
         mimetype = mime.lookup(fileName);

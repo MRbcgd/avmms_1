@@ -18,7 +18,7 @@ block main
     })
 
     document.getElementById('checkAvm').onclick = function(){
-    socket.emit('checkAvm', 'SOCKETIO -> UPDATE CHECKDATE')
+    socket.emit('checkAvm')
     }
     document.getElementById('earnIncome').onclick = function(){
     socket.emit('earnIncome', #{avm.avmFinancialCondition})
