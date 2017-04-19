@@ -137,7 +137,7 @@ module.exports = function(passport) {
     var user = req.user;
     var managerId = req.params.managerId;
     var avmId = req.params.avmId;
-    var sql = 'UPDATE avm SET avmCheckDate = SYSDATE() WHERE avmId = ?;';
+    var sql = 'UPDATE avm SET avmCheckDate = NOW() WHERE avmId = ?;';
     //sql : 자판기 점검시간 최신화
 
     if (user === undefined) {
@@ -201,7 +201,7 @@ module.exports = function(passport) {
     var productId = req.params.productId;
     var sql = 'SET @description=""; CALL purchaseProduct(?, ?, ?, @description); SELECT @description';
     //sql : 재고 구입
-    
+
     if (user === undefined) {
       console.log("User Not Found");
       throw new Error("User Not Found");
@@ -269,30 +269,33 @@ module.exports = function(passport) {
     else if (req.url != '/client/css/navbar.css' && req.url != '/favicon.ico') { //request 2번 요청 방지
       req.session.avmId = avmId;
       req.session.productId = productId;
+
+      conn.query(sql, [avmId, productId], function(err, results) {
+        if (err) {
+          console.log(err);
+          res.status(500).send('Internal Server Error');
+        }
+
+        if (results[0] === undefined) {
+          console.log('AvmId Or ProductId Not Correct');
+          throw new Error("AvmId Or ProductId Not Correct");
+        }
+        else {
+          for (var i = 0; i < results.length; i++) {
+            console.log(results[i]);
+          };
+          res.redirect('/vm/client/' + avmId);
+        }
+      });
     }
     else { //request 2번 요청 방지
-      avmId = req.session.avmId;
-      productId = req.session.productId;
+      // avmId = req.session.avmId;
+      // productId = req.session.productId;
+      res.redirect('/vm/client/' + req.session.avmId);
 
     }
 
-    conn.query(sql, [avmId, productId], function(err, results) {
-      if (err) {
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-      }
 
-      if (results[0] == undefined) {
-        console.log('AvmId Or ProductId Not Correct');
-        throw new Error("AvmId Or ProductId Not Correct");
-      }
-      else {
-        for (var i = 0; i < results.length; i++) {
-          console.log(results[i]);
-        };
-        res.redirect('/vm/client/' + avmId);
-      }
-    });
   });
 
   return router;

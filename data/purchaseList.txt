@@ -1,106 +1,31 @@
-purchaseId=33 managerId=5 productId=1 purchaseDate=null 
-purchaseId=34 managerId=5 productId=1 purchaseDate=null 
-purchaseId=35 managerId=5 productId=1 purchaseDate=null 
-purchaseId=36 managerId=5 productId=1 purchaseDate=null 
-purchaseId=37 managerId=5 productId=1 purchaseDate=null 
-purchaseId=38 managerId=5 productId=1 purchaseDate=null 
-purchaseId=39 managerId=5 productId=1 purchaseDate=null 
-purchaseId=40 managerId=5 productId=1 purchaseDate=null 
-purchaseId=41 managerId=5 productId=1 purchaseDate=null 
-purchaseId=42 managerId=5 productId=1 purchaseDate=null 
-purchaseId=43 managerId=5 productId=1 purchaseDate=null 
-purchaseId=44 managerId=5 productId=1 purchaseDate=null 
-purchaseId=45 managerId=5 productId=1 purchaseDate=null 
-purchaseId=46 managerId=5 productId=1 purchaseDate=null 
-purchaseId=47 managerId=5 productId=1 purchaseDate=null 
-purchaseId=48 managerId=5 productId=1 purchaseDate=null 
-purchaseId=49 managerId=5 productId=1 purchaseDate=null 
-purchaseId=50 managerId=5 productId=1 purchaseDate=null 
-purchaseId=51 managerId=5 productId=1 purchaseDate=null 
-purchaseId=52 managerId=5 productId=1 purchaseDate=null 
-purchaseId=53 managerId=5 productId=1 purchaseDate=null 
-purchaseId=54 managerId=5 productId=1 purchaseDate=null 
-purchaseId=55 managerId=5 productId=1 purchaseDate=null 
-purchaseId=56 managerId=5 productId=1 purchaseDate=null 
-purchaseId=57 managerId=5 productId=1 purchaseDate=null 
-purchaseId=58 managerId=5 productId=5 purchaseDate=null 
-purchaseId=59 managerId=5 productId=5 purchaseDate=null 
-purchaseId=60 managerId=5 productId=5 purchaseDate=null 
-purchaseId=61 managerId=5 productId=1 purchaseDate=null 
-purchaseId=62 managerId=5 productId=1 purchaseDate=null 
-purchaseId=63 managerId=5 productId=1 purchaseDate=null 
-purchaseId=64 managerId=5 productId=1 purchaseDate=null 
-purchaseId=65 managerId=5 productId=1 purchaseDate=null 
-purchaseId=66 managerId=5 productId=1 purchaseDate=null 
-purchaseId=67 managerId=5 productId=1 purchaseDate=null 
-purchaseId=68 managerId=5 productId=1 purchaseDate=null 
-purchaseId=69 managerId=5 productId=1 purchaseDate=null 
-purchaseId=70 managerId=5 productId=1 purchaseDate=null 
-purchaseId=71 managerId=5 productId=1 purchaseDate=null 
-purchaseId=72 managerId=5 productId=1 purchaseDate=null 
-purchaseId=73 managerId=5 productId=1 purchaseDate=null 
-purchaseId=74 managerId=5 productId=1 purchaseDate=null 
-purchaseId=75 managerId=5 productId=2 purchaseDate=null 
-purchaseId=76 managerId=5 productId=2 purchaseDate=null 
-purchaseId=77 managerId=5 productId=2 purchaseDate=null 
-purchaseId=78 managerId=5 productId=2 purchaseDate=null 
-purchaseId=79 managerId=5 productId=2 purchaseDate=null 
-purchaseId=80 managerId=5 productId=2 purchaseDate=null 
-purchaseId=81 managerId=5 productId=2 purchaseDate=null 
-purchaseId=82 managerId=5 productId=2 purchaseDate=null 
-purchaseId=83 managerId=5 productId=2 purchaseDate=null 
-purchaseId=84 managerId=5 productId=2 purchaseDate=null 
-purchaseId=85 managerId=5 productId=2 purchaseDate=null 
-purchaseId=87 managerId=5 productId=2 purchaseDate=null 
-purchaseId=88 managerId=5 productId=2 purchaseDate=null 
-purchaseId=89 managerId=5 productId=2 purchaseDate=null 
-purchaseId=90 managerId=5 productId=2 purchaseDate=null 
-purchaseId=91 managerId=5 productId=2 purchaseDate=null 
-purchaseId=92 managerId=5 productId=2 purchaseDate=null 
-purchaseId=93 managerId=5 productId=2 purchaseDate=null 
-purchaseId=94 managerId=5 productId=2 purchaseDate=null 
-purchaseId=95 managerId=5 productId=2 purchaseDate=null 
-purchaseId=96 managerId=5 productId=2 purchaseDate=null 
-purchaseId=97 managerId=5 productId=2 purchaseDate=null 
-purchaseId=98 managerId=5 productId=2 purchaseDate=null 
-purchaseId=99 managerId=5 productId=2 purchaseDate=null 
-purchaseId=100 managerId=5 productId=2 purchaseDate=null 
-purchaseId=101 managerId=5 productId=2 purchaseDate=null 
-purchaseId=102 managerId=5 productId=2 purchaseDate=null 
-purchaseId=103 managerId=5 productId=2 purchaseDate=null 
-purchaseId=104 managerId=5 productId=2 purchaseDate=null 
-purchaseId=105 managerId=5 productId=2 purchaseDate=null 
-purchaseId=106 managerId=5 productId=3 purchaseDate=null 
-purchaseId=107 managerId=5 productId=3 purchaseDate=null 
-purchaseId=108 managerId=5 productId=3 purchaseDate=null 
-purchaseId=109 managerId=5 productId=3 purchaseDate=null 
-purchaseId=110 managerId=5 productId=3 purchaseDate=null 
-purchaseId=111 managerId=5 productId=3 purchaseDate=null 
-purchaseId=112 managerId=5 productId=3 purchaseDate=null 
-purchaseId=113 managerId=5 productId=3 purchaseDate=null 
-purchaseId=114 managerId=5 productId=3 purchaseDate=null 
-purchaseId=115 managerId=5 productId=3 purchaseDate=null 
-purchaseId=116 managerId=5 productId=3 purchaseDate=null 
-purchaseId=117 managerId=5 productId=3 purchaseDate=null 
-purchaseId=118 managerId=5 productId=3 purchaseDate=null 
-purchaseId=119 managerId=5 productId=3 purchaseDate=null 
-purchaseId=120 managerId=5 productId=3 purchaseDate=null 
-purchaseId=121 managerId=5 productId=3 purchaseDate=null 
-purchaseId=122 managerId=5 productId=3 purchaseDate=null 
-purchaseId=123 managerId=5 productId=3 purchaseDate=null 
-purchaseId=124 managerId=5 productId=3 purchaseDate=null 
-purchaseId=125 managerId=5 productId=3 purchaseDate=null 
-purchaseId=126 managerId=5 productId=3 purchaseDate=null 
-purchaseId=127 managerId=5 productId=3 purchaseDate=null 
-purchaseId=128 managerId=5 productId=1 purchaseDate=null 
-purchaseId=129 managerId=5 productId=1 purchaseDate=null 
-purchaseId=130 managerId=5 productId=1 purchaseDate=null 
-purchaseId=131 managerId=5 productId=1 purchaseDate=null 
-purchaseId=132 managerId=5 productId=1 purchaseDate=Wed Apr 12 2017 20:48:10 GMT+0000 (UTC) 
-purchaseId=133 managerId=5 productId=1 purchaseDate=Wed Apr 12 2017 20:48:12 GMT+0000 (UTC) 
-purchaseId=134 managerId=5 productId=1 purchaseDate=Wed Apr 12 2017 20:48:13 GMT+0000 (UTC) 
-purchaseId=135 managerId=5 productId=1 purchaseDate=Wed Apr 12 2017 20:49:20 GMT+0000 (UTC) 
-purchaseId=136 managerId=5 productId=1 purchaseDate=Wed Apr 12 2017 20:49:21 GMT+0000 (UTC) 
-purchaseId=137 managerId=5 productId=1 purchaseDate=Wed Apr 12 2017 20:49:23 GMT+0000 (UTC) 
-purchaseId=138 managerId=5 productId=1 purchaseDate=Wed Apr 12 2017 20:49:24 GMT+0000 (UTC) 
-purchaseId=139 managerId=5 productId=1 purchaseDate=Wed Apr 12 2017 20:49:26 GMT+0000 (UTC) 
+purchaseId=142 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 09:58:28 GMT+0000 (UTC) 
+purchaseId=143 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:14 GMT+0000 (UTC) 
+purchaseId=144 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:18 GMT+0000 (UTC) 
+purchaseId=145 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:20 GMT+0000 (UTC) 
+purchaseId=146 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:21 GMT+0000 (UTC) 
+purchaseId=147 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:22 GMT+0000 (UTC) 
+purchaseId=148 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:23 GMT+0000 (UTC) 
+purchaseId=149 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:24 GMT+0000 (UTC) 
+purchaseId=150 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:26 GMT+0000 (UTC) 
+purchaseId=151 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:27 GMT+0000 (UTC) 
+purchaseId=152 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:28 GMT+0000 (UTC) 
+purchaseId=153 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:29 GMT+0000 (UTC) 
+purchaseId=154 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:30 GMT+0000 (UTC) 
+purchaseId=155 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:31 GMT+0000 (UTC) 
+purchaseId=156 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:32 GMT+0000 (UTC) 
+purchaseId=157 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:33 GMT+0000 (UTC) 
+purchaseId=158 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:34 GMT+0000 (UTC) 
+purchaseId=159 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:35 GMT+0000 (UTC) 
+purchaseId=160 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:36 GMT+0000 (UTC) 
+purchaseId=161 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:37 GMT+0000 (UTC) 
+purchaseId=162 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:39 GMT+0000 (UTC) 
+purchaseId=163 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:41 GMT+0000 (UTC) 
+purchaseId=164 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:42 GMT+0000 (UTC) 
+purchaseId=165 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:43 GMT+0000 (UTC) 
+purchaseId=166 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:44 GMT+0000 (UTC) 
+purchaseId=167 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:46 GMT+0000 (UTC) 
+purchaseId=168 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:46 GMT+0000 (UTC) 
+purchaseId=169 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:47 GMT+0000 (UTC) 
+purchaseId=170 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:49 GMT+0000 (UTC) 
+purchaseId=171 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:50 GMT+0000 (UTC) 
+purchaseId=172 managerId=6 productId=1 purchaseDate=Thu Apr 13 2017 10:00:51 GMT+0000 (UTC) 
